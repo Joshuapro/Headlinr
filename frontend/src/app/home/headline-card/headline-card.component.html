@@ -1,0 +1,32 @@
+<div
+  [ngClass]="{
+    'border-primary': tag === 'tech',
+    'border-success': tag === 'health',
+    'border-danger': tag === 'covid',
+    'border-warning': tag === 'politics',
+    'border-info': tag === 'world',
+    'border-pink': tag === 'travel',
+    'border-orange': tag === 'weather',
+    'border-purple': tag === 'economy',
+    'border-light-green': tag === 'art',
+    'border-dark-blue`': tag === 'business',
+    'border-sky': tag === 'science'
+  }"
+  class="card"
+  style="width: 14rem;"
+>
+  <a [routerLink]="['/article', id]">
+    <div *ngIf="thumbnail.length > 0">
+      <img class="card-img-top" src="{{ thumbnail }}" alt="Card image cap" />
+    </div>
+    <div class="card-body">
+      <p class="card-title">{{ title }}</p>
+      <p class="card-text">
+        <small class="text-muted">{{ date | date: "mediumDate" }}</small>
+      </p>
+    </div>
+    <div *ngIf="tag !== 'unknown'" class="card-footer bg-transparent">
+      {{ tag | uppercase }}
+    </div>
+  </a>
+</div>

@@ -1,0 +1,14 @@
+#headline-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  .card {
+    margin: 10px;
+  }
+}
+
+#search-bar {
+  max-width: 50%;
+  margin: 0 auto;
+}

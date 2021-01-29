@@ -1,0 +1,9 @@
+<ul>
+  <li><a class="active" routerLink="/home">Home</a></li>
+  <li><a routerLink="/likes">My Likes</a></li>
+  <li><a routerLink="/preference">Preference</a></li>
+  <li style="float:right"><a class="active" *ngIf="!loggedIn()" routerLink="/register">Register</a></li>
+  <li style="float:right"><a class="active" *ngIf="!loggedIn()" routerLink="/login">Login</a></li>
+  <li style="float:right"><a class="active" *ngIf="loggedIn()" (click)="logout()">Logout</a></li>
+  <li style="float:right"><p class="active" *ngIf="loggedIn()">Hello {{username | uppercase}},</p></li>
+</ul>

@@ -1,0 +1,36 @@
+CREATE TABLE `headlinr`.`user` (
+  `username` VARCHAR(20) NOT NULL,
+  `password` CHAR(20) NOT NULL,
+  `f_name` VARCHAR(20) NULL,
+  `l_name` VARCHAR(20) NULL,
+  `preference` VARCHAR(20) NULL,
+  PRIMARY KEY (`username`, `password`));
+
+
+
+CREATE TABLE `headlinr`.`news` (
+  `news_id` INT NOT NULL AUTO_INCREMENT,
+  `url` VARCHAR(45) NOT NULL,
+  `snippet` VARCHAR(60) NULL,
+  `tag` VARCHAR(20) NULL,
+  `title` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`news_id`, `url`));
+
+
+
+CREATE TABLE `headlinr`.`like_news` (
+  `username` VARCHAR(20) NOT NULL,
+  `news_id` INT NOT NULL AUTO_INCREMENT,
+  `liketime` DATETIME NULL,
+  PRIMARY KEY (`username`, `news_id`),
+  INDEX `news_id_idx` (`news_id` ASC) VISIBLE,
+  CONSTRAINT `username`
+    FOREIGN KEY (`username`)
+    REFERENCES `headlinr`.`user` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `news_id`
+    FOREIGN KEY (`news_id`)
+    REFERENCES `headlinr`.`news` (`news_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);

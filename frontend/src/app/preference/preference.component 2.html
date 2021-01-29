@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Your favorite tags</h3>
+      </div>
+      <div class="card-body">
+        <ng-multiselect-dropdown
+          [placeholder]="'Select tag'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        <button id="submit-btn" class="btn btn-primary" (click)="saveTag()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

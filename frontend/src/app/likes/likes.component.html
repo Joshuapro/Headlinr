@@ -1,0 +1,21 @@
+<div class="main-content">
+  <h1 style="text-align: center">My likes</h1>
+  <div *ngIf="!haveLikedNews">
+    <h2>You don't have any liked news! Go ahead and like some news for them to show up here.</h2>
+  </div>
+
+  <div id="likes-section" *ngIf="likedNews?.length">
+    <div *ngFor="let news of likedNews">
+      <app-headline-card
+        class="card"
+        [id]="news.id"
+        [thumbnail]="news.thumbnail"
+        [title]="news.title"
+        [description]="news.description"
+        [source]="news.source"
+        [date]="news.date"
+        [tag]="news.tag"
+      ></app-headline-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="main-content">
+  <h1 style="text-align: center">Headlines</h1>
+  <div id="search-bar">
+    <input type="text" class="form-control" [(ngModel)]="query" (change)="filterNews()" placeholder="Press enter to search...."/>
+  </div>
+  <div id="headline-section">
+    <div *ngIf="!headlines?.length">
+      <h2>Can not find any headlines</h2>
+    </div>
+    <div *ngFor="let headline of headlines">
+      <app-headline-card
+        class="card"
+        [id]="headline.id"
+        [thumbnail]="headline.thumbnail"
+        [title]="headline.title"
+        [description]="headline.description"
+        [source]="headline.source"
+        [date]="headline.date"
+        [tag]="headline.tag"
+      ></app-headline-card>
+    </div>
+  </div>
+
+  <div *ngIf="loggedIn()">
+    <h1 style="text-align: center">News you might like</h1>
+    <!-- can later replace you with username -->
+    <div *ngIf="preferences.length === 0">
+      <h2>You don't have any favorite tags! Go ahead and set your preferences so we know what you like!</h2>
+    </div>
+
+    <div id="headline-section">
+      <div *ngFor="let headline of headlines">
+        <div *ngIf="preferences.indexOf(headline.tag) >= 0">
+          <app-headline-card
+            class="card"
+            [id]="headline.id"
+            [thumbnail]="headline.thumbnail"
+            [title]="headline.title"
+            [description]="headline.description"
+            [source]="headline.source"
+            [date]="headline.date"
+            [tag]="headline.tag"
+          ></app-headline-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
